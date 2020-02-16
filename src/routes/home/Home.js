@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import * as d3 from "d3";
 
 import './Home.css';
-import ParCoords from '../../components/parCoords/ParCoords';
+import Pc from '../../components/pc/Pc';
 
 export default function Home(props) {
     const [data, setData] = useState(null);
@@ -20,7 +20,7 @@ export default function Home(props) {
             <div>
                 <p>Home Page</p>
             </div>
-            <ParCoords {...props} data={data}></ParCoords>
+            <Pc {...props} data={data}></Pc>
 
         </React.Fragment>
     );
