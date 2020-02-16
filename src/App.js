@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import NotFound from './routes/notFound/NotFound';
+import Home from './routes/home/Home';
 
 
 
@@ -17,6 +18,7 @@ class App extends Component {
     return (
       <main className="main">
         <Switch location={this.props.location}>
+          <Route exact path="/" component={Home} />
           <Route component={NotFound} />
         </Switch>
       </main>
