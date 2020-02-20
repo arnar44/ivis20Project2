@@ -1,10 +1,10 @@
-.parcoords {
-    min-width: 1000px;
-    max-width: 85%;
+.overViewContainer {    
+    display: flex;
+    justify-content: flex-start;
 
-    min-height: 300px;
-    
-    margin: auto;
+
+
+    margin-left: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
 }

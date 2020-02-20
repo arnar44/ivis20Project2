@@ -1,88 +1,69 @@
-import React from 'react';
-import { ParallelCoordinates } from '../../../node_modules/react-parcoords';
+import React, { useEffect, useRef, useState } from 'react';
+import Parcoords from 'parcoord-es';
+import * as d3 from 'd3';
+import PCtable from '../pcTable/PCtable'
 import './Pc.css';
-import * as d3 from "d3";
-
-
 
 export default function Pc(env) {
     const data = env.data;
+    const chartRef = useRef(null);
+    const [tableData, setTableData] = useState([]);
 
-    const countries = ['Argentina', 'Australia', 'Brazil', 'Chile', 'China', 'Colombia', 'Germany', 'Ghana', 'India',
-        'Iraq', 'Japan', 'Kazakstan', 'Malaysia', 'Morocco', 'Netherlands', 'New-Zealand', 'Nigeria',
-        'Pakistan', 'Peru', 'Poland', 'Russia', 'South-Africa', 'Zimbabwe', 'Spain', 'Sweden', 'Thailand',
-        'Egypt', 'USA', 'Uruguay', 'Uzbekistan'];
+    useEffect(() => {
+        if (chartRef !== null && data) {
+            const colorgen = d3.scaleOrdinal()
+                .domain(data)
+                .range(["#a6cee3", "#1f78b4", "#b2df8a", "#33a02c",
+                    "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00",
+                    "#cab2d6", "#6a3d9a", "#ffff99", "#b15928"]);
 
-    const color = d3.scaleOrdinal()
-        .domain(countries)
-        .range(["#DB7F85", "#50AB84", "#4C6C86", "#C47DCB", "#B59248", "#DD6CA7", "#E15E5A", "#5DA5B3", "#725D82", "#54AF52", "#954D56", "#8C92E8", "#D8597D", "#AB9C27", "#D67D4B", "#D58323", "#BA89AD", "#357468", "#8F86C2", "#7D9E33", "#517C3F", "#9D5130", "#5E9ACF", "#776327", "#944F7E"]);
+            Parcoords()(chartRef.current)
+                .data(data)
+                .hideAxis(['Country Code'])
+                .color(function (d) {
+                    return colorgen(d['Country Name']);
+                })
+                .alpha(0.5)
+                .margin({ top: 20, left: 50, bottom: 12, right: 50 })
+                .mode("queue")
+                .render()
+                .reorderable()
+                .brushMode("1D-axes")
+                .on('brushend', brushed => setTableData(brushed)); 
 
-
-    const dimensions = {
-        'Country Name': {
-            title: "Name",
-            type: 'string',
-
-        },
-        'Family importance': {
-            title: "Family",
-            type: 'number'
-        },
-        'Friend importance': {
-            title: "Friends",
-            type: 'number'
-        },
-        Happiness: {
-            title: "Happiness",
-            type: 'number',
-        },
-        'Life satisfaction': {
-            title: "Satisfaction",
-            type: 'number',
-        },
-        Religious: {
-            title: "Religous",
-            type: 'number'
-        },
-        'Suicide justifiability': {
-            title: "Suicide",
-            type: 'number'
-        },
-        'Employment status': {
-            title: "Employment",
-            type: 'number'
-        },
-        age: {
-            title: "Age",
-            type: 'number'
-        },
-        'Level of Education': {
-            title: "Education",
-            type: 'number'
-        },
-        'Live with Parents': {
-            title: "Parents",
-            type: 'number'
+            setTableData(data);
         }
-    };
+    }, [chartRef, data]);
 
-
-    const props = {
-        color: 'green',
-        width: 800,
-        height: 400,
-        dimensions,
-        data: data,
-        highlights: [],
-        onBrush: console.log,
-        onBrushEnd: console.log,
-        onLineHover: console.log,
-        onLinesHover: console.log
-    };
 
     return (
-        <div className='ParCoords'>
-            {data && <ParallelCoordinates {...props} />}
+        <div>
+            <div className='overViewContainer'>
+                <div ref={chartRef} id={'chart-id'} style={{ width: 1000, height: 450 }} className={'parcoords'} />
+                <div className='coordsTable'>
+                    <PCtable data={tableData}></PCtable>
+                </div>
+            </div>
+            <div className='parCoordsNav'>
+                <div>
+                    <button>Clear Brush</button>
+                </div>
+                <div>
+                    <button>Wave 3</button>
+                    <button>Wave 4</button>
+                    <button>Wave 5</button>
+                    <button>Wave 6</button>
+                    <button>All</button>
+                </div>
+                <div>
+                    <button>Continent View</button>
+                </div>
+                <div>
+                    <button>Male</button>
+                    <button>Female</button>
+                    <button>Both</button>
+                </div>
+            </div>
         </div>
     )
 }
