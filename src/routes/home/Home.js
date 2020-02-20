@@ -17,7 +17,7 @@ export default function Home(props) {
     return (
         <React.Fragment>
 
-            <div>
+            <div className="home">
                 <p>Home Page</p>
             </div>
             <Pc {...props} data={data}></Pc>

@@ -1,0 +1,54 @@
+.pcTableContainer {
+
+}
+
+.pcTableTitle {
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+
+.pcTable {
+    margin-left: 20px;
+}
+
+ul {
+    max-height: 420px;
+    overflow: auto;
+}
+
+li {
+    list-style-type: none;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #F0F8FF;
+    font-size: 0.75rem;
+    margin: 0 3px 3px 0;
+    cursor: pointer;
+    margin-right: 15px;
+    min-width: 50px;
+    text-align: center;
+}
+
+li:hover {
+    background-color: #DEB887;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
