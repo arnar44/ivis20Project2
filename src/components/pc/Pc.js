@@ -19,7 +19,7 @@ export default function Pc(env) {
 
             Parcoords()(chartRef.current)
                 .data(data)
-                .hideAxis(['Country Code'])
+                .hideAxis(['Case','Country Code'])
                 .color(function (d) {
                     return colorgen(d['Country Name']);
                 })
