@@ -5,9 +5,10 @@ import PCtable from '../pcTable/PCtable'
 import './Pc.css';
 
 export default function Pc(env) {
-    const data = env.data;
+    const { data, setOnDisplay, setSelectedC } = env;
     const chartRef = useRef(null);
     const [tableData, setTableData] = useState([]);
+    const pC = useRef(null);
 
     useEffect(() => {
         if (chartRef !== null && data) {
@@ -17,9 +18,10 @@ export default function Pc(env) {
                     "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00",
                     "#cab2d6", "#6a3d9a", "#ffff99", "#b15928"]);
 
-            Parcoords()(chartRef.current)
-                .data(data)
-                .hideAxis(['Case','Country Code'])
+            d3.select('#chart-id').html(null);
+
+            pC.current = Parcoords()(chartRef.current).data(data)
+                .hideAxis(['Case','Country Code','Continent'])
                 .color(function (d) {
                     return colorgen(d['Country Name']);
                 })
@@ -29,40 +31,28 @@ export default function Pc(env) {
                 .render()
                 .reorderable()
                 .brushMode("1D-axes")
-                .on('brushend', brushed => setTableData(brushed)); 
-
+                .on('brushend', brushed => setTableData(brushed))
+                .on('brushend', (brushed) => {
+                    setTableData(brushed);
+                    setOnDisplay(brushed);
+                }); 
+            
             setTableData(data);
+            setOnDisplay(data);
         }
-    }, [chartRef, data]);
+    }, [chartRef, data, setOnDisplay]);
 
 
     return (
         <div>
             <div className='overViewContainer'>
-                <div ref={chartRef} id={'chart-id'} style={{ width: 1000, height: 450 }} className={'parcoords'} />
+                <div ref={chartRef} id={'chart-id'} style={{ width: 1000, height: 400 }} className={'parcoords'} />
                 <div className='coordsTable'>
-                    <PCtable data={tableData}></PCtable>
+                    <PCtable data={tableData} setSelectedC={setSelectedC}></PCtable>
                 </div>
             </div>
-            <div className='parCoordsNav'>
-                <div>
-                    <button>Clear Brush</button>
-                </div>
-                <div>
-                    <button>Wave 3</button>
-                    <button>Wave 4</button>
-                    <button>Wave 5</button>
-                    <button>Wave 6</button>
-                    <button>All</button>
-                </div>
-                <div>
-                    <button>Continent View</button>
-                </div>
-                <div>
-                    <button>Male</button>
-                    <button>Female</button>
-                    <button>Both</button>
-                </div>
+            <div className='resetter'>
+                <button className='resetBrushButton' onClick={() => pC.current.brushReset()}>Clear Brush</button>
             </div>
         </div>
     )
