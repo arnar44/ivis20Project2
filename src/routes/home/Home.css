@@ -1,0 +1,37 @@
+.belowPC {
+    display: flex;
+}
+
+.detailsView {
+    margin-left: 20px;
+}
+
+.dataControls {
+    display: flex;
+    flex-direction: column;
+}
+
+.continentContainer, .waveContainer, .sexContainer {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+
+.button {
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: rgb(135, 206, 250);
+    font-size: 0.75rem;
+    margin: 0 3px 3px 0;
+    cursor: pointer;
+    margin-right: 15px;
+    min-width: 50px;
+    text-align: center;
+}
+
+.button.pressed {
+    background-color: rgb(135, 206, 250, 0.3);
+}
+
+
