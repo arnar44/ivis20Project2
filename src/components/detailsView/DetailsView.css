@@ -1,0 +1,35 @@
+.details {
+    display: flex;
+    flex-direction: row;
+}
+
+.listDetails {
+    margin-left: 20px;
+}
+
+th {
+    padding: 5px;
+    font-size: 0.75rem;
+    text-align: center;
+    background: #333; 
+    color: white; 
+    font-weight: bold; 
+    background-repeat: no-repeat;
+    background-position: 3% center;
+}
+
+td {
+    text-align: center;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+}
+
+td, th { 
+    padding: 6px; 
+    border: 1px solid #ccc; 
+    text-align: left; 
+}
+
+tr:nth-of-type(odd) { 
+    background: #eee; 
+}

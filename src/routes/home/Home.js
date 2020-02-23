@@ -82,10 +82,10 @@ export default function Home(props) {
                         <button className={cNames[1]} onClick={() => bC(true)}>Continent View</button>
                     </div>
                     <div className='waveContainer'>
-                        <button className={bNames[0]} onClick={() => bW([!w[0],w[1],w[2],w[3]])}>Wave 3</button>
-                        <button className={bNames[1]} onClick={() => bW([w[0],!w[1],w[2],w[3]])}>Wave 4</button>
-                        <button className={bNames[2]} onClick={() => bW([w[0],w[1],!w[2],w[3]])}>Wave 5</button>
-                        <button className={bNames[3]} onClick={() => bW([w[0],w[1],w[2],!w[3]])}>Wave 6</button>
+                        <button className={bNames[0]} onClick={() => bW([!w[0],w[1],w[2],w[3]])}>1995-1998</button>
+                        <button className={bNames[1]} onClick={() => bW([w[0],!w[1],w[2],w[3]])}>1999-2004</button>
+                        <button className={bNames[2]} onClick={() => bW([w[0],w[1],!w[2],w[3]])}>2005-2009</button>
+                        <button className={bNames[3]} onClick={() => bW([w[0],w[1],w[2],!w[3]])}>2010-2014</button>
                     </div>
                     <div className='sexContainer'>
                         <button className={sNames[0]} onClick={() => bS([!sex[0],sex[1]])} >Male</button>
