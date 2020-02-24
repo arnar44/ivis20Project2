@@ -1,0 +1,37 @@
+.projectDescription {
+    margin: 20px;
+}
+
+.project, .findings, .toolAndData {
+    margin-bottom: 20px;
+}
+
+.project {
+    margin-top: 20px;
+}
+
+.infoLi {
+    list-style-type: none;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #F0F8FF;
+    font-size: 0.75rem;
+    margin: 0 3px 3px 0;
+    cursor: initial;
+    margin-right: 15px;
+    min-width: 50px;
+    text-align: center;
+}
+
+.infoLi:hover {
+    background-color: #F0F8FF;
+}
+
+.backLink {
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+}

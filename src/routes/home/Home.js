@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import DataFrame from 'dataframe-js';
 
 import './Home.css';
@@ -73,7 +74,13 @@ export default function Home(props) {
 
     return (
         <React.Fragment>
-
+            <div className='opener'>
+                <h5>Information Visualization Project 2</h5>
+                <p>Press <Link to='/about'>here</Link> to read about the project</p>
+                <p>Use blue buttons to set data on display, axis's can also be moved and brushed.</p>
+                <p>Red data in spidergraph and first column in table shows average of data on display (selected and/or brushed)</p>
+                <p>Select country/continent in list on right of paralell coordinates to averages (yellow data in spidergraph and second column in table)</p>
+            </div>
             <Pc {...props} data={data} setOnDisplay={setOnDisplay} setSelectedC={setSelectedC}></Pc>
             <div className='belowPC'>
                 <div className="dataControls">

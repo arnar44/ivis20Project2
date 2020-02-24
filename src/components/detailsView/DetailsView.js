@@ -46,9 +46,10 @@ export default function DetailsView(props) {
                 { axis: 'Happiness', value: happSum/count},
                 { axis: 'Religious', value: religSum/count},
                 { axis: 'Live with Parents', value: parentSum/count},
+                { axis: 'Employment Status', value: emplSum/count},
             ],
             [
-                lifesatSum/count, suiSum/count, emplSum/count, ageSum/count, eduSum/count
+                lifesatSum/count, suiSum/count, ageSum/count, eduSum/count
             ]
         ];
     };
@@ -61,9 +62,10 @@ export default function DetailsView(props) {
                     { axis: 'Happiness', value: data['Happiness']},
                     { axis: 'Religious', value: data['Religious']},
                     { axis: 'Live with Parents', value: data['Live with Parents']},
+                    { axis: 'Employment Status', value: data['Employment status']},
                 ],
                 [
-                    data['Life satisfaction'], data['Suicide justifiability'], data['Employment status'], data['age'], data['Level of Education']
+                    data['Life satisfaction'], data['Suicide justifiability'], data['age'], data['Level of Education']
                 ]
             ]
     };
@@ -138,19 +140,14 @@ export default function DetailsView(props) {
                                 <td>{details[1].length !== 0 && Number(details[1][1]).toFixed(3)}</td>
                             </tr>
                             <tr>
-                                <td>Employment Status</td>
+                                <td>Age</td>
                                 <td>{Number(details[0][2].toFixed(3))}</td>
                                 <td>{details[1].length !== 0 && Number(details[1][2]).toFixed(3)}</td>
                             </tr>
                             <tr>
-                                <td>Age</td>
+                                <td>Level of Education</td>
                                 <td>{Number(details[0][3].toFixed(3))}</td>
                                 <td>{details[1].length !== 0 && Number(details[1][3]).toFixed(3)}</td>
-                            </tr>
-                            <tr>
-                                <td>Level of Education</td>
-                                <td>{Number(details[0][4].toFixed(3))}</td>
-                                <td>{details[1].length !== 0 && Number(details[1][4]).toFixed(3)}</td>
                             </tr>
                             
                         </tbody>
