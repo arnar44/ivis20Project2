@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import NotFound from './routes/notFound/NotFound';
 import Home from './routes/home/Home';
+import About from './routes/about/About';
 
 
 
@@ -19,6 +20,7 @@ class App extends Component {
       <main className="main">
         <Switch location={this.props.location}>
           <Route exact path="/" component={Home} />
+          <Route exact path="/about" component={About} />
           <Route component={NotFound} />
         </Switch>
       </main>
